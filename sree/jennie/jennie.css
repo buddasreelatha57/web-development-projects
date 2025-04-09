@@ -1,0 +1,47 @@
+fieldset{
+    width: 500px;
+    height: 600px;
+    margin-left: 30%;
+    background-image: url(../../Assesst/image/jenn.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 95%;
+}
+legend{
+    font-size: x-large;
+    font-family: 'Times New Roman', Times, serif;
+}
+h1,pre{
+    color: transparent;
+}
+fieldset:hover{
+    border-top: 20px groove black;
+    border-left: 20px groove black;
+    border-bottom: 20px groove palevioletred;
+    border-right: 20px groove palevioletred;
+    background-image: url(../../Assesst/image/jennie2.png);
+    background-size: 500px;
+    background-position: 170px 170px;
+}
+fieldset:hover>h1{
+    color: black;
+    margin-left: 20px;
+    margin-top: 50px;
+}
+fieldset:hover>pre{
+    color: rgb(209, 58, 144);
+    font-size: larger;
+    margin-top: 20px;
+}
+fieldset:hover>legend{
+    margin-left: 80%;
+}
+audio{
+  width: 100px;
+  margin-top: 120px;
+}
+fieldset:hover>audio{
+    width: 350px;
+    margin-top: 10px;
+   
+}

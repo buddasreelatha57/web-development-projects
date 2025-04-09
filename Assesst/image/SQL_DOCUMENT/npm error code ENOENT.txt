@@ -1,0 +1,7 @@
+npm error code ENOENT
+npm error syscall getaddrinfo
+npm error errno ENOENT
+npm error enoent request to https://registry.npmjs.org/react failed, reason: getaddrinfo ENOENT registry.npmjs.org
+npm error enoent This is related to npm not being able to find a file.
+npm error enoent
+npm error A complete log of this run can be found in: C:\Users\budda\AppData\Local\npm-cache\_logs\2024-12-02T15_33_01_562Z-debug-0.log

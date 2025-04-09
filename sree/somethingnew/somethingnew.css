@@ -1,0 +1,144 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.main-class{
+    width: 100%;
+    height: 100px;
+    background-color: rgb(203, 55, 171);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-class h1{
+    color: cyan;
+    font-size: 40px;
+}
+#list {
+    display: flex;
+    list-style: none;
+}
+.main-class ul a{
+    text-decoration: none;
+    color: rgb(7, 7, 7);
+    margin: 20px;
+    font-size: 20px;
+}
+.main-section{
+    width: 100%;
+    height: 500px;
+    background-color: black;
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+}
+.main-img{
+    width: 60%;
+    height: 500px;
+}
+.main-img .img{
+    width: 100%;
+    height: 100%;
+    float: left;
+    display: inline;
+    overflow: hidden;
+    margin: 20px;
+    transition: all 0.5s ease;
+    animation: slider 3s linear 0.1s alternate ;
+   
+}
+#img1{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../Assesst/image/achieve.jpeg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    /* position: relative;
+    left: 60%; */
+}
+#img2{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../Assesst/image/attack.jpeg");
+    background-repeat: no-repeat;
+    background-size: 90%;
+   /* position: relative;
+   right: 30%; */
+}
+#img3{
+    width: 100%;
+    height: 100%;
+    background-image: url("../../Assesst/image/achieve1.gif");
+    background-repeat: no-repeat;
+    background-size: 90%;
+    /* position: relative;
+    right: 41pc; */
+}
+
+.btn{
+    width: 40px;
+    height: 40px;
+    top: 0%;
+    
+}
+#forward{
+    /* width: 100%;
+    height: 100%; */
+    font-size: 30px;
+    border-radius: 20px;
+    position: absolute;
+    top: 40%;
+    right: 30%;
+}
+#backward{
+    /* width: 100%;
+    height: 100%; */
+    font-size: 30px;
+    border-radius: 20px;
+    position: absolute;
+    top: 40%;
+    left: 13%;
+
+}
+.button{
+    width: 10px;
+    height: 10px;
+    background-color: palevioletred;
+    border-radius: 50%;
+    box-shadow: 2px 2px 2px rgb(58, 52, 54);
+    position: relative;
+    top: 85%;
+    left: 50%;
+   
+}
+/* .sliderbutton .button{
+    
+} */
+#a1{
+    position: absolute;
+    left: 30%;
+}
+#a2{
+    position: absolute;
+    left: 40%;
+}
+#a3{
+    position: absolute;
+    left: 50%;
+}
+@keyframes slider {
+    0%{transform: translateX(0%);}
+    10%{transform: translateX(-100%);}
+    20%{transform: translateX(-100%);}
+    30%{transform: translateX(-200%);}
+    40%{transform: translateX(-200%);} 
+    50%{transform: translateX(-200%);}
+    60%{transform: translateX(-300%);}
+    70%{transform: translateX(-30%);}
+    80%{transform: translateX(-300%);} 
+    90%{transform: translateX(0%);}
+    100%{transform: translateX(0%);}
+
+}

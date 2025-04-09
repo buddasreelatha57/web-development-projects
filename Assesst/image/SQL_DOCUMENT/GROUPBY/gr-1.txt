@@ -1,0 +1,74 @@
+SQL> WAQTD NUMBER OF EMPLOYEES WORKING IN EACH DEPARTEMENT EXCEPT PRESIDENT.
+SP2-0734: unknown command beginning "WAQTD NUMB..." - rest of line ignored.
+SQL> SELECT COUNT(*), DEPTNO
+  2  FROM EMP
+  3  WHERE JOB!='PRESIDENT'
+  4  GROUP BY DEPTNO;
+
+  COUNT(*)     DEPTNO                                                           
+---------- ----------                                                           
+         6         30                                                           
+         5         20                                                           
+         2         10                                                           
+
+SQL> WAQTD TOTAL SALARY NEEDED TO PAY ALL THE EMPLOYEES IN EACH JOB.
+SP2-0734: unknown command beginning "WAQTD TOTA..." - rest of line ignored.
+SQL> SELECT SUM(SAL)
+  2  FROM EMP
+  3  GROUP BY JOB;
+
+  SUM(SAL)                                                                      
+----------                                                                      
+      4150                                                                      
+      5600                                                                      
+      5000                                                                      
+      8275                                                                      
+      6000                                                                      
+
+SQL> WAQTD NUMBER OF EMPLOYEEES WORKING AS MANAGER IN EACH DEPARTMENT.
+SP2-0734: unknown command beginning "WAQTD NUMB..." - rest of line ignored.
+SQL> SELECT COUNT(*)
+  2  FROM EMP
+  3  WHERE JOB='MANAGER'
+  4  GROUP BY DEPTNO;
+
+  COUNT(*)                                                                      
+----------                                                                      
+         1                                                                      
+         1                                                                      
+         1                                                                      
+
+SQL> WAQTD AVG SALARY NEEDED TO PAY ALL THE EMPLOYEES IN EACH DEPARTMENT EXCLUDING THE EMPLOYEES OF DEPTNO 20.
+SP2-0734: unknown command beginning "WAQTD AVG ..." - rest of line ignored.
+SQL> SELECT AVG(SAL),DEPTNO
+  2  FROM EMP
+  3  WHERE DEPTNO NOT IN 20
+  4  GROUP BY DEPTNO;
+
+  AVG(SAL)     DEPTNO                                                           
+---------- ----------                                                           
+1566.66667         30                                                           
+2916.66667         10                                                           
+
+SQL> WAQTD NUMBER OF EMPLOYEES HAVING CHARACTER 'A' IN THEIR NAMES IN EACH JOB.
+SP2-0734: unknown command beginning "WAQTD NUMB..." - rest of line ignored.
+SQL> SELECT COUNT(*), JOB, ENAME
+  2  FROM EMP
+  3  WHERE ENAME LIKE '%A%'
+  4  GROUP BY JOB;
+SELECT COUNT(*), JOB, ENAME
+                      *
+ERROR at line 1:
+ORA-00979: not a GROUP BY expression 
+
+
+SQL> SELECT COUNT(*), JOB
+  2   FROM EMP
+  3   WHERE ENAME LIKE '%A%'
+  4   GROUP BY JOB;
+
+  COUNT(*) JOB                                                                  
+---------- ---------                                                            
+         3 SALESMAN                                                             
+         2 CLERK                                                                
+         2 MANAGER                                                              

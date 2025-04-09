@@ -1,0 +1,131 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+.main-div{
+    width: 500px;
+    height: 500px;
+    background-image: url(../../Assesst/image/jenn.png);
+    border-radius: 50%;
+    border: 10px solid purple;
+    /* margin-left: auto;
+    margin-right: auto;
+ */
+ margin: auto;
+}
+.clock{
+    width: 100px;
+    height: 100px;
+    font-size: 5em;
+    color: rgb(0, 0, 0);
+    /* float: left; */
+    position: absolute;
+}
+#div1{
+    top: 10px;
+    left: 47%;
+    color: purple;
+}
+#div2{
+    top: 200px;
+    right: 30%;
+    color: darkorchid;
+}
+#div3{
+    top: 190px;
+    left: 34%;
+    
+}
+#div4{
+    bottom: 210px;
+    left: 49%;
+    color: darkorchid;
+}
+#pointer{
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: black;
+    position: absolute;
+    top: 250px;
+    left: 49.5%;
+}
+#name{
+    font-size: 40px;
+    position: absolute;
+    color: darkred;
+    top: 120px;
+    left: 48%;
+}
+ .min-hand-wrapper{
+    width: 400px;
+    height: 400px; 
+    position: absolute;
+    top: 60px;
+    left: 37%;
+}
+.min-hand{
+    position: relative;
+}
+#min-hand{
+    width: 3px;
+    height: 150px;
+    background-color: rgb(83, 9, 44);
+    position: absolute;
+    top: 50px;
+    left: 50%;
+}
+#min-arrow{
+    font-size: 50px;
+    font: bold;
+    position: absolute;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    transform: rotate(180deg);
+    top: 32px;
+    left: 47.5%; 
+}
+ .hour-hand-wrapper{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+    top: 60px;
+    left: 37%;
+}
+.hour-hand{
+    position: relative;
+}
+#hour-hand{
+    width: 6px;
+    height: 100px;
+    background-color: rgb(68, 7, 36);
+    position: absolute;
+    top: 100px;
+    left: 50%;
+}
+#hour-arrow{
+    font-size: 50px;
+   font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    position: absolute;
+    transform: rotate(180deg);
+    top: 81px;
+    left: 47.5%;
+} 
+.sec-hand-wrapper{
+        width: 400px;
+        height: 400px;
+        position: absolute;
+        top: 60px;
+        left: 37%;
+    }
+    .sec-hand{
+        position: relative;
+    }
+    #sec-hand{
+        width: 2px;
+        height: 120px;
+        background-color: rgb(217, 67, 137);
+        position: absolute;
+        top: 80px;
+        left: 50%;
+    }
+    

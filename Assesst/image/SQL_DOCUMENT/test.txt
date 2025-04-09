@@ -1,0 +1,175 @@
+TEST PAPER                                       NAME:  Sreelatha B
+BATCH CODE – A16
+Part 1
+1. What is DBMS and RDBMS & it’s difference?
+  DBMS                                                                  RDBMS
+1.it has query lang to communicate with database                      1.It has sql  to communicate with database
+2. it has security and authorization                                2. it has security and authorization
+3.it store in file format                                           3. it store in the table format
+4. it take more time to retrive the files                           4.it take less time to retrive the files
+5.it take more storage                                              5.it take less storage
+
+
+2. What is difference between where clause and having clause?
+     WHERE CLAUSE                                                        HAVING CLAUSE
+   1.where clause to filter the condition based on the condition         1. IT IS Used to filter the group by condition
+     which meet specific rows.                                           2. in having clause we can use mrf
+     syntax                                                              syntax
+     SELECT COL_NAME                                                      select GROUP FUNCTION
+      FROM TABLENAME                                                       FROM TABLENAME
+      WHERE<FILTER-CONDITION>                                              [WHERE <FILTER THE CONDITION>]
+                                                                           GROUP BY COL_NAME/EXPRESSION
+                                                                            HAVING <FILTER_GROUP BY _CONDITION>
+                               
+     
+3. What is group by clause?
+   it is used to group the records/rows.
+   syntax
+   SELECT GROUP FUNCTION
+   FROM TABLENAME
+  [WHERE <FILTER_CONDITION]
+  GROUP BY COL_NAME/EXPRESSION
+
+   1. It can have mrf 
+    2. where clause optional
+    3 group by execute after select.
+    4. it can use mrf in where clause
+  
+4. What is having clause?
+   iT IS USED to filter the group by clause
+   syntax
+   select GROUP FUNCTION/expression
+    FROM TABLENAME
+   [WHERE <FILTER THE CONDITION>]
+    GROUP BY COL_NAME/EXPRESSION
+    HAVING <FILTER_GROUP BY _CONDITION>
+  
+    1. it can use mrf in having clause
+    2 after group by clause it execute having clause.
+    3.in this where clause also option.
+
+5. Write Rules of Group function.
+    it group function also known as MRF
+    1. it can accept only one argument
+    2 . in group function  we supposed pass any other col_name/expression
+    3.it can ignore null 
+    4.we can use in where clause
+    5. in count can only accept * as a argument and no other is possible. 
+
+6. What is primary key and foreign key.
+   Primary key                            foreign key
+    1.It is used to identify the          1. It is used to establish connection between 2 or more table
+     records uniquely.
+    2. primary key is a combination of    2. foreign key is not a combination of unique and not null
+    unique and not null
+
+7. What is mean by data definition language?
+   It is used to create our own table in the database and modify the table and delete the table.
+   
+8. When do we use subquery?
+  Subquery is an inner function/nested function and it make condition / queries more understandable
+  1. input of inner query is an output and the output given to outer query input.
+  2. this output taken as input to the outer query gives input.
+  3. which makes code simple and easy.
+  4. we can use upto 255 inner queries.
+
+  
+  
+ 
+ Part 2
+1. WAQTD name and annual salary with deduction of 10%.
+  SELECT ENAME, SA*12-(SAL*12*10/100) DEDUCTION
+ FROM EMP;
+
+2. LIST the employees who are hired after 82 and before 87.
+ SELECT *
+ FROM EMP
+ WHERE HIREDATE>'31-DEC-1982' AND HIREDATE<'01-JAN-1987';
+
+3. DISPLAY dept names which are having letter '0'
+ SELECT DNAME
+ FROM DEPT
+ WHERE DNAME LIKE '%O%';
+
+4. DISPLAY all the employees whose job starts with string 'MAN'
+   SELECT *
+    FROM EMP
+    WHERE JOB LIKE 'MAN%';
+
+5. WAQTD name, comm of the employee who earns min commission
+
+  SELECT ENAME,COMM
+FROM EMP
+WHERE COMM IN (SELECT MIN(COMM)
+                FROM EMP);
+6. WAQTD loc of the emp whose employee number is 7902
+SELECT LOC
+FROM DEPT
+WHERE DEPTNO IN (SELECT DEPTNO
+FROM EMP
+WHERE EMPNO=7902);
+
+7. WAQTD the hiredate which are duplicated in emp table
+SELECT  HIREDATE
+FROM EMP
+GROUP BY HIREDATE
+ HAVING COUNT(*)>1;
+
+8. WAQTD name and hiredate of the employees if they are hired after the president
+SELECT ENAME, HIREDATE
+FROM EMP
+WHERE HIREDATE>(SELECT HIREDATE
+                 FROM EMP
+                 WHERE JOB='PRESIDENT'); 
+
+9. WAQTD department name in which there are no employees.
+SELECT DNAME
+FROM DEPT
+WHERE DEPTNO NOT IN(SELECT DEPTNO FROM EMP);
+
+10. WAQTD dname for each department excluding dept 20.
+ SELECT DNAME
+ FROM DEPT
+ WHERE DEPTNO!=20;
+
+11. WAQTD location of smith's manager.
+ SELECT LOC
+ FROM DEPT
+ WHERE DEPTNO IN(SELECT DEPTNO
+                 FROM EMP
+                 WHERE EMPNO IN(SELECT MGR
+                                FROM EMP
+                                WHERE ENAME='SMITH'))
+ 
+12. WAQTD number of the employee reporting to king
+SELECT COUNT(*)
+FROM EMP
+WHERE MGR IN(SELECT EMPNO
+             FROM EMP
+             WHERE ENAME='KING');
+
+13. WAQTD dname of jones.
+ SELECT DNAME
+ FROM DEPT
+ WHERE DEPTNO IN (SELECT DEPTNO
+                  FROM EMP
+                  WHERE ENAME='JONES');
+
+14. WAQTD name of the employee earning 3rd maximum salary
+SELECT ENAME
+FROM EMP
+WHERE SAL IN(SELECT MAX(SAL)
+             FROM EMP
+             WHERE SAL<(SELECT MAX(SAL)
+                        FROM EMP
+                        WHERE SAL<(SELECT MAX(SAL)
+                                   FROM EMP)));
+
+15. WAQTD name and sal of the employees earning more than king in the dept accounting
+SELECT ENAME, SAL
+FROM EMP
+WHERE SAL>(SELECT SAL
+           FROM EMP
+           WHERE ENAME='KING') AND DEPTNO IN (SELECT DEPTNO
+                                            FROM DEPT
+                                            WHERE DNAME='ACCOUNTING');

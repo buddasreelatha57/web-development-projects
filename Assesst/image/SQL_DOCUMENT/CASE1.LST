@@ -1,0 +1,180 @@
+SQL> ASSIGNMENT ON CASE 1 & 2
+SP2-0734: unknown command beginning "ASSIGNMENT..." - rest of line ignored.
+SQL> WAQTD NAMES OF THE EMPLOYEES EARNING MORE THAN SCOTT IN ACCOUNTING DEPT
+SP2-0734: unknown command beginning "WAQTD NAME..." - rest of line ignored.
+SQL> SELECT ENAME
+  2  FROM EMP
+  3  WHERE SAL>(SELECT SAL
+  4             FROM EMP
+  5             WHERE ENAME='SCOTT') AND DEPTNO IN(SELECT DEPTNO
+  6                                                FROM DEPT
+  7                                                WHERE DNAME='ACCOUNTING');
+
+ENAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+KING                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+
+SQL> WAQTD DETAILS OF THE EMPLOYEES WORKING AS MANAGER IN THE LOCATION CHICAGO
+SP2-0734: unknown command beginning "WAQTD DETA..." - rest of line ignored.
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE JOB='MANAGER' AND DEPTNO=(SELECT DEPTNO
+  4                                  FROM DEPTNO
+  5                                  WHERE LOC='CHICAGO');
+                                FROM DEPTNO
+                                     *
+ERROR at line 4:
+ORA-00942: table or view does not exist 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT *
+  2  FROM EMP
+  3  WHERE JOB='MANAGER' AND DEPTNO=(SELECT DEPTNO
+  4                                  FROM DEPT
+  5*                                 WHERE LOC='CHICAGO')
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
+SQL> WAQTD NAME AND SAL OF THE EMPLOYEES EARNING MORE THAN KING IN THE DEPT ACCOUNTING
+SP2-0734: unknown command beginning "WAQTD NAME..." - rest of line ignored.
+SQL> SELECT ENAME, SAL
+  2  FROM EMP
+  3  WHERE SAL>(SELECT SAL
+  4   FROM EMP
+  5  WHERE ENAME='KING') AND DEPTNO IN(SELECT DEPTNO
+  6                                    FROM DEPT
+  7                                    WHERE DNAME='ACCOUNTING');
+
+no rows selected
+
+SQL> WAQTD DETAILS OF THE EMPLOYEES WORKING AS SALESMAN IN THE DEPARTEMENT SALES
+SP2-0734: unknown command beginning "WAQTD DETA..." - rest of line ignored.
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE JOB='SALESMAN' AND DEPTNO IN(SELECT DEPTNO
+  4                                      FROM DEPT
+  5                                     WHERE DNAME='SALES');
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
+SQL> WAQTD NAME , SAL , JOB , HIREDATE OF THE EMPLOYEES WORKING IN OPERATIONS DEPARTMENT AND HIRED BEFORE KING
+SP2-0734: unknown command beginning "WAQTD NAME..." - rest of line ignored.
+SQL> SELECT ENAME,SAL,JOB,HIREDATE
+  2  FROM EMP
+  3  WHERE DEPTNO=(SELECT DEPTNO
+  4                FROM DEPT
+  5                WHERE DNAME='OPERATION') AND HIREDATE<(SELECT HIREDATE
+  6                                                        FROM EMP
+  7                                                        WHERE ENAME='KING');
+
+no rows selected
+
+SQL> DISPLAY ALL THE EMPLOYEES WHOSE DEPARTMET NAMES ENDING 'S'.
+SP2-0734: unknown command beginning "DISPLAY AL..." - rest of line ignored.
+SQL> SELECT *
+  2  FROM EMP
+  3  WHERE DEPTNO=(SELECT DEPTNO
+  4                FROM DEPT
+  5                WHERE DNAME LIKE '%S');
+WHERE DEPTNO=(SELECT DEPTNO
+              *
+ERROR at line 3:
+ORA-01427: single-row subquery returns more than one row 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT *
+  2  FROM EMP
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4                FROM DEPT
+  5*               WHERE DNAME LIKE '%S')
+SQL> /
+
+     EMPNO ENAME      JOB              MGR HIREDATE         SAL       COMM     DEPTNO                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+---------- ---------- --------- ---------- --------- ---------- ---------- ----------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      7499 ALLEN      SALESMAN        7698 20-FEB-81       1600        300         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      7521 WARD       SALESMAN        7698 22-FEB-81       1250        500         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      7654 MARTIN     SALESMAN        7698 28-SEP-81       1250       1400         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      7698 BLAKE      MANAGER         7839 01-MAY-81       2850                    30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      7844 TURNER     SALESMAN        7698 08-SEP-81       1500          0         30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+      7900 JAMES      CLERK           7698 03-DEC-81        950                    30                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
+6 rows selected.
+
+SQL> WAQTD DNAME OF THE EMPLOYEES WHOS NAMES HAS CHARACTER 'A' IN IT
+SP2-0734: unknown command beginning "WAQTD DNAM..." - rest of line ignored.
+SQL> SELECT DNAME
+  2  FROM EMP
+  3  WHERE DEPTNO IN(SELECT DEPTNO
+  4                   FROM EMP
+  5                   WHERE ENAME LIKE '%A%');
+SELECT DNAME
+       *
+ERROR at line 1:
+ORA-00904: "DNAME": invalid identifier 
+
+
+SQL> ED
+Wrote file afiedt.buf
+
+  1  SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO IN(SELECT DEPTNO
+  4                   FROM EMP
+  5*                  WHERE ENAME LIKE '%A%')
+SQL> /
+
+DNAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+--------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+ACCOUNTING                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                              
+RESEARCH                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
+SALES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
+SQL> WAQTD DNAME AND LOC OF THE EMPLOYEES WHOS SALARY IS RUPEES 800
+SP2-0734: unknown command beginning "WAQTD DNAM..." - rest of line ignored.
+SQL> SELECT DNAME, LOC
+  2  FROM DEPT
+  3   WHERE DEPTNO IN (SELECT DEPTNO
+  4                    FROM EMP
+  5                    WHERE SAL=800);
+
+DNAME          LOC                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+-------------- -------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+RESEARCH       DALLAS                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
+SQL> WAQTD DNAME OF THE EMPLOYEES WHO EARN COMISSION
+SP2-0734: unknown command beginning "WAQTD DNAM..." - rest of line ignored.
+SQL> SELECT DNAME
+  2  FROM DEPT
+  3  WHERE DEPTNO IN (SELECT DEPTNO
+  4                   FROM EMP
+  5                   WHERE COMM IS NOT NULL);
+
+DNAME                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+--------------                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+SALES                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
+
+SQL> WAQTD LOC OF THE EMPLOYEES IF THEY EARN COMISSION IN DEPT 4
+SP2-0734: unknown command beginning "WAQTD LOC ..." - rest of line ignored.
+SQL> SELECT LOC
+  2  FROM DEPT
+  3  WHERE DEPTNO=40 AND DEPTNO IN (SELECT DEPTNO
+  4                                 FROM EMP
+  5                                 WHERE COMM IS NOT NULL);
+
+no rows selected
+
+SQL> SPOOL OFF
